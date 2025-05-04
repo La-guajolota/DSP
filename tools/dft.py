@@ -6,8 +6,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # señal
-# x = [2,1,0,1,2]
-x = [.5,1,.5]
+x = [2,1,0,1,2]
+#x = [.5,1,.5]
 
 def dft(x, padding=None):
     """
@@ -45,14 +45,14 @@ def dft(x, padding=None):
 
 def main():
     # Realizar la DFT
-    X = dft(x)
+    X = dft(x, padding=2**4)
     
     # Imprimir el resultado
     print("Resultado de la DFT:", X)
     # Graficar la magnitud de la DFT
     plt.figure(figsize=(10, 5))
     plt.subplot(2, 1, 1)
-    plt.plot(np.abs(X))
+    plt.stem(np.abs(X))
     plt.title("Magnitud de la DFT")
     plt.subplot(2, 1, 2)
     plt.plot(np.angle(X))

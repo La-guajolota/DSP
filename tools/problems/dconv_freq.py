@@ -9,8 +9,8 @@ Calcule la DFT de x[n], h[n] y y[n] verificando la propiedad de convolución en 
 multiplicación en el dominio frecuencia
 """
 
-from dconv import dconv 
-from dft import dft
+from tools.dconv import dconv
+from tools.dft import dft
 import numpy as np
 import matplotlib.pyplot as plt
 

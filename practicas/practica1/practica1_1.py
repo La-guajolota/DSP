@@ -1,5 +1,3 @@
-import matplotlib
-matplotlib.use('Agg')  # Cambiar el backend de matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
