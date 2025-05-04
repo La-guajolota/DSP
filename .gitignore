@@ -1,3 +1,2 @@
 # Ignorar carpetas de notas
-notas/
-*/notas/
+./notas/
