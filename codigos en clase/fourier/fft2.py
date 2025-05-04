@@ -16,16 +16,15 @@ X = fftshift(fft(signal, fft_size)) # Señal en el dominio de la frecuencia
 X_cal = 1/(1 - a * np.exp(-1j * omega)) # Calculo de la transformada de Fourier a mano
 
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8))
-figsize=(12, 5)
 # Graficamos la señal en el dominio del tiempo
-ax1.stem(n, signal, basefmt="b-", use_line_collection=True)
+ax1.stem(n, signal, basefmt="b-")
 ax1.set_title("Señal en el dominio del tiempo")
 ax1.set_xlabel("Tiempo (n)")
 ax1.set_ylabel("Amplitud")
 # Graficamos la transformada de Fourier analítica
 ax2.plot(omega, np.abs(X_cal), color="r", label="Calculada")
-ax2.plot(omega, np.abs(X)/np.max(np.abs(X)*np.max(np.abs(X_cal))), color="g", label="Calculada")
-ax2.set_title("Señal en el dominio del tiempo")
+ax2.plot(omega, np.abs(X)/np.max(np.abs(X)), color="g", label="FFT Normalizada")
+ax2.set_title("Transformada de Fourier")
 ax2.set_xlabel("Frecuencia (rad)")
 ax2.set_ylabel("Amplitud")
 plt.legend()
