@@ -8,7 +8,7 @@ x = np.sin(2 * np.pi * 100 * t) + np.sin(2 * np.pi * 104 * t)  # Señal compuest
 
 # Ventanas
 n = len(x)
-hamming_window = np.hamming(n)
+hamming_window = np.hamming(n) 
 hanning_window = np.hanning(n)
 blackman_window = np.blackman(n)
 
@@ -23,8 +23,9 @@ X_hanning = np.fft.fft(x_hanning)
 X_blackman = np.fft.fft(x_blackman)
 
 # Frecuencias
-f = np.fft.fftfreq(n, 1/fs)
+f = np.fft.fftfreq(n, 1/fs) # Vector de frecuencias 
 f = np.fft.fftshift(f)  # Desplazar el cero al centro
+# Vextor de frecuencias para la FFT
 X_hamming = np.fft.fftshift(X_hamming)
 X_hanning = np.fft.fftshift(X_hanning)
 X_blackman = np.fft.fftshift(X_blackman)
