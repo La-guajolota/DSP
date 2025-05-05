@@ -46,14 +46,6 @@ El repositorio incluye material organizado por parciales académicos:
 
 El directorio `bibliografias` contiene material de referencia recomendado para profundizar en los conceptos implementados.
 
-## 🔍 Etiquetas
-
-<div align="center">
-
-`tools` `dsp` `box` `convolution` `reference-implementation` `fourier-transform` `boxtool`
-
-</div>
-
 ## 🤝 Contribuciones
 
 Las contribuciones son bienvenidas. Para cambios importantes:
