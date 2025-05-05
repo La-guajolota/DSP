@@ -39,3 +39,5 @@ def dconv(h, x):
             if 0 <= n - k < len_x:
                 y[n] += h[k] * x[n - k]
     return y
+
+</div> </details>
