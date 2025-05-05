@@ -22,7 +22,7 @@ f1 = 5   # Frecuencia de la segunda señal (Hz)
 
 # Generación de señales
 n = np.arange(0, 199)  # Vector de tiempo discreto para la señal completa
-n2 = np.arange(0, 99)  # Vector de tiempo discreto para la señal concatenada
+n2 = np.arange(0, 199)  # Vector de tiempo discreto para la señal concatenada
 
 # Señal 1: Suma de dos senoidales
 x1 = np.sin(2 * np.pi * (f0 / fs) * n) + np.sin(2 * np.pi * (f1 / fs) * n)

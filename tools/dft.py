@@ -6,7 +6,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # señal
-x = [2,1,0,1,2]
+# x = [2,1,0,1,2]
+#x = [1,1,1,1,0,0,0,0] #examen
+n = np.arange(0, 6)  # Vector de tiempo discreto 6 puntos
+x = list(np.array(np.cos((np.pi/3)*n)))
+print("x:", x)
 #x = [.5,1,.5]
 
 def dft(x, padding=None):
@@ -45,7 +49,7 @@ def dft(x, padding=None):
 
 def main():
     # Realizar la DFT
-    X = dft(x, padding=2**4)
+    X = dft(x, padding=6)
     
     # Imprimir el resultado
     print("Resultado de la DFT:", X)
