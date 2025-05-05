@@ -1,3 +1,19 @@
+"""
+Cálculo y comparación de la Densidad Espectral de Potencia (PSD) utilizando dos métodos:
+1) Periodograma simple: Se calcula la PSD mediante la Transformada Rápida de Fourier (FFT) 
+   y se escala adecuadamente para obtener la densidad espectral de potencia.
+2) Método de Welch: Se utiliza el método de Welch para estimar la PSD, dividiendo la señal 
+   en segmentos, aplicando una ventana Hann, y utilizando un solapamiento del 50%.
+
+Además, se realiza el cálculo de la potencia de la señal mediante:
+- Promedio en el dominio del tiempo.
+- Integración de la PSD obtenida por el periodograma.
+- Integración de la PSD obtenida por el método de Welch.
+
+Finalmente, se grafican las PSD obtenidas por ambos métodos para comparar los resultados.
+"""
+# Autor: Adrián Silva Palafox
+# Fecha: 2025-4-4
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import welch
