@@ -10,7 +10,10 @@ n = np.arange(N)
 x = np.cos(2 * np.pi * f0 * n / fs)
 
 # 1) Periodograma simple (FFT + escalado)
-Nfft = 2048   # Zero-padding para mejor densidad de bins
+#Nfft = 2048   # Zero-padding para mejor densidad de bins
+#Nfft = 1024   # Sin zero-padding
+Nfft = 512    # Sin zero-padding
+#Nfft = 256    # Sin zero-padding
 X = np.fft.fft(x, Nfft)
 f = np.fft.fftfreq(Nfft, 1/fs)
 Sxx_period = (1/(fs*N)) * np.abs(X)**2
