@@ -4,3 +4,13 @@
 # Ignorar directorios __pycache__ y archivos compilados .pyc
 __pycache__/
 *.pyc
+
+# Ignorar archivos de configuración de IDEs
+.idea/
+*.iml
+# Ignorar archivos de configuración de entornos virtuales
+.venv/
+# Ignorar archivos de configuración de Jupyter Notebook
+.ipynb_checkpoints/
+# Ignorar archivos de configuración de VS Code
+.vscode/

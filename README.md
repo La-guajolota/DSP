@@ -1,4 +1,4 @@
-# 🎛️ Box Tool para DSP
+# 🎛️ Tool Box para DSP
 
 ![Banner](https://via.placeholder.com/800x200/3498db/ffffff?text=Digital+Signal+Processing+Toolbox)
 
