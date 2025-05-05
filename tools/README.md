@@ -1,4 +1,4 @@
-# 📊 Biblioteca de Procesamiento de Señales Digitales
+# 📊 Biblioteca de custom tools de Procesamiento de Señales Digitales
 
 ![Banner](https://via.placeholder.com/800x200/4b6584/ffffff?text=Procesamiento+de+Se%C3%B1ales+Digitales)
 
