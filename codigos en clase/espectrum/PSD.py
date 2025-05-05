@@ -1,46 +1,44 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.signal import welch
 
-f0 = 100
-fs = 1000
-N = 1000
-n = np.arange(0, N)
+# Parámetros de la señal
+f0 = 100      # Frecuencia de la señal (Hz)
+fs = 1000     # Frecuencia de muestreo (Hz)
+N = 1024      # Número de muestras
+n = np.arange(N)
 x = np.cos(2 * np.pi * f0 * n / fs)
 
-N1 = 1000 # Numero de puntos para la TDF
-X = np.fft.fft(x, N1) # TDF
-Xshift = np.fft.fftshift(X) # Desplazamiento de la TDF
-f = np.arange(-N1/2, N1/2) * fs / N1 # Frecuencias  
+# 1) Periodograma simple (FFT + escalado)
+Nfft = 2048   # Zero-padding para mejor densidad de bins
+X = np.fft.fft(x, Nfft)
+f = np.fft.fftfreq(Nfft, 1/fs)
+Sxx_period = (1/(fs*N)) * np.abs(X)**2
+f_pos = f[:Nfft//2]
+Sxx_period = Sxx_period[:Nfft//2]
 
-# Graficar la TDF
-plt.figure()
-plt.plot(f, np.abs(Xshift))
-plt.xlabel('Frecuencia (Hz)')
-plt.ylabel('Amplitud |X(k)|')
-plt.title('Magnitud de X(k)')
-plt.grid()
+# 2) Método de Welch
+#    Segmentos de 256 muestras, 50% overlap, ventana Hann
+f_welch, Sxx_welch = welch(x, fs=fs, window='hann', nperseg=256, noverlap=128, nfft=Nfft, scaling='density')
 
-#PSP
-Sxx = (1/N) * np.abs(Xshift)**2 # PSD
-Sxxshift = np.fft.fftshift(Sxx) # Desplazamiento de la PSD
-f = np.arange(-N1/2, N1/2) * fs / N1 # Frecuencias
-# Graficar la PSD
-plt.figure()
-plt.plot(f, Sxxshift)
+# 3) Cálculo de potencia: integrar PSD
+power_period = np.trapz(Sxx_period, f_pos)
+power_welch = np.trapz(Sxx_welch, f_welch)
+power_time = np.mean(x**2)
+
+print(f"Potencia vía promedio en tiempo: {power_time:.4f}")
+print(f"Potencia integrando PSD (Periodograma): {power_period:.4f}")
+print(f"Potencia integrando PSD (Welch):      {power_welch:.4f}")
+
+# —— Gráficas ——————————————————————————————————————————
+
+plt.figure(figsize=(10, 5))
+plt.semilogy(f_pos, Sxx_period, label='Periodograma')
+plt.semilogy(f_welch, Sxx_welch, label='Welch (Hann, 256, 50%)')
 plt.xlabel('Frecuencia (Hz)')
-plt.ylabel('PSD')
-plt.title('Densidad espectral de potencia Sxx(f)')
-plt.grid()
+plt.ylabel('PSD [V²/Hz]')
+plt.title('Comparación de PSD: Periodograma vs. Welch')
+plt.grid(True, which='both', ls='--')
+plt.legend()
+plt.tight_layout()
 plt.show()
-
-# PSD en decibelios
-Sxx_dB = 10 * np.log10(Sxxshift)
-# Graficar la PSD en decibelios
-plt.figure()
-plt.plot(f, Sxx_dB)
-plt.xlabel('Frecuencia (Hz)')
-plt.ylabel('PSD (dB)')
-plt.title('Densidad espectral de potencia Sxx(f) en dB')
-plt.grid()
-plt.show()
-
