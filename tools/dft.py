@@ -8,10 +8,13 @@ import matplotlib.pyplot as plt
 # señal
 # x = [2,1,0,1,2]
 #x = [1,1,1,1,0,0,0,0] #examen
+# x = [1,2,3,2,1] # examen
 n = np.arange(0, 6)  # Vector de tiempo discreto 6 puntos
 x = list(np.array(np.cos((np.pi/3)*n)))
+# n = np.arange(0, 8)  # Vector de tiempo discreto 6 puntos
+# x = list(0.8**n)  # Genera una onda sinusoidal como array
+
 print("x:", x)
-#x = [.5,1,.5]
 
 def dft(x, padding=None):
     """
@@ -49,7 +52,7 @@ def dft(x, padding=None):
 
 def main():
     # Realizar la DFT
-    X = dft(x, padding=6)
+    X = dft(x, 5)
     
     # Imprimir el resultado
     print("Resultado de la DFT:", X)
