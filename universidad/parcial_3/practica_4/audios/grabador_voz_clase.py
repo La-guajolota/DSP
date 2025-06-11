@@ -174,7 +174,7 @@ class GrabadorVozClase:
             audio_int16 = (audio_normalizado * 32767).astype(np.int16)
             wavfile.write(nombre_archivo, self.fs, audio_int16)
             
-            print(f"💾 Guuaacaouardadaoamaoa:   0nombre_archivo}")
+            print(f"💾 Guuaacaouardadaoamaoa:   0nombre_archivo")
             
             # Análisis espectral rápido
             self._analizar_grabacion(audio_normalizado, nombre_archivo)

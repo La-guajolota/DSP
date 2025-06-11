@@ -1,7 +1,14 @@
 #include <Arduino.h>
 
 // Incluir archivo de coeficientes generado por Python
-#include "lowpass1.h"
+//#include "lowpass15.h" //106us de procesamiento
+//#include "lowpass31.h" //130us
+#include "lowpass63.h"   //
+
+//#include "lowpassESP.h"
+//#include "highpassESP.h"
+//#include "passbandESP.h"
+
 
 // Configuración de pines
 const int analogInPin = 34; // Pin analógico de entrada (ESP32 ADC pin)
@@ -12,7 +19,7 @@ float samples[FILTER_LENGTH] = {0.0};
 int sampleIndex = 0;
 
 // Variables para temporización
-constexpr unsigned long SAMPLE_PERIOD_US = 120; // Período de muestreo en microsegundos (8k333Hz)
+constexpr unsigned long SAMPLE_PERIOD_US = 150; // Período de muestreo en microsegundos (6k666Hz)
 unsigned long lastSampleTime = 0;
 
 // Variables para estadísticas
@@ -53,7 +60,7 @@ void loop() {
         }
 
         // Limitar salida entre 0 y 3.3V y convertir para el DAC
-        uint8_t dacValue = constrain(outputValue, 0.0, 3.3) * (255.0 / 3.3);
+        uint8_t dacValue = constrain(outputValue, 0, 3.3) * (255.0 / 3.3);
 
         dacWrite(dacOutPin, dacValue); // Enviar al DAC
 
